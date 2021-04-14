@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #static-resources},
+                                                ~{:: #header},
+                                                ~{:: #nav},
+                                                ~{:: #layoutSidenav_content},
+											    ~{:: #footer}
+                                               )}">
+<head>
+	<th:block id="static-resources">
+
+		<title>Foresail PMS - Account</title>
+
+		<script src="../js/account.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+		        crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		        crossorigin="anonymous"></script>
+		<script src="../assets/demo/datatables-demo.js"></script>
+
+
+	</th:block>
+</head>
+
+<body class="sb-nav-fixed">
+<div id="header" th:replace="~{/fragments/app-fragments :: header}">
+</div>
+
+<div id="layoutSidenav">
+	<div id="nav" th:replace="~{/fragments/app-fragments :: nav-default}">
+	</div>
+	<div id="layoutSidenav_content">
+		<main>
+			<div class="container-fluid">
+				<h1 class="mt-4"></h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="main">Dashboard</a></li>
+					<li class="breadcrumb-item active">Account</li>
+				</ol>
+
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-table mr-1"></i>
+						Account
+					</div>
+					<div class="card-body" id="account-details">
+						<table>
+							<tr>
+								<td>Account ID</td>
+								<td th:text="${account.id}"></td>
+							</tr>
+							<tr>
+								<td>Balance</td>
+								<td th:text="${account.balance}"></td>
+							</tr>
+							<tr>
+								<td>Charge</td>
+								<td th:text="${account.charge}"></td>
+							</tr>
+							<tr>
+								<td>Created</td>
+								<td th:text="${account.created}"></td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="py-4 bg-light mt-auto" th:replace="~{/fragments/app-fragments :: footer}">
+
+		</footer>
+	</div>
+</div>
+
+</body>
+
+</html>

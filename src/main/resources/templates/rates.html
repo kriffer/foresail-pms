@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main-layout :: main-fragment(
+                                                ~{::title},
+                                                ~{:: #static-resources},
+                                                ~{:: #header},
+                                                ~{:: #nav},
+                                                ~{:: #layoutSidenav_content},
+											    ~{:: #footer}
+                                               )}">
+<head>
+	<th:block id="static-resources">
+
+		<title>Foresail PMS - Rates</title>
+
+		<script src="../js/rates.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
+		        crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
+		        crossorigin="anonymous"></script>
+		<script src="../assets/demo/datatables-demo.js"></script>
+
+
+	</th:block>
+</head>
+
+<body class="sb-nav-fixed">
+<div id="header" th:replace="~{/fragments/app-fragments :: header}">
+</div>
+
+<div id="layoutSidenav">
+	<div id="nav" th:replace="~{/fragments/app-fragments :: nav-default}">
+	</div>
+	<div id="layoutSidenav_content">
+		<main>
+			<div class="container-fluid">
+				<h1 class="mt-4"> </h1>
+				<ol class="breadcrumb mb-4">
+					<li class="breadcrumb-item"><a href="main">Dashboard</a></li>
+					<li class="breadcrumb-item active">Rates</li>
+				</ol>
+
+				<div class="card mb-4" th:each="property : ${properties}">
+					<div class="card-header">
+						<i class="fas fa-table mr-1"></i><span th:text="${property.key.name}"></span>
+						<button type="button" class="btn btn-primary btn-sm ml-3"><span
+								class="fas fa-plus"></span><span class="ml-2">Add rate</span></button>
+					</div>
+<!--					<div class="card-body">-->
+						<div class="table-responsive">
+							<table class="table table-sm" id="rates-datatable" width="100%" cellspacing="0">
+								<thead class="thead-light">
+								<tr>
+									<th> ID</th>
+									<th> Name</th>
+									<th>firstNight</th>
+									<th>lastNight</th>
+									<th>minNights</th>
+									<th>maxNights</th>
+									<th>roomPrice</th>
+									<th>extraPersonPrice</th>
+									<th>bedPrice</th>
+									<th></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr th:each="rate : ${property.value}">
+									<td th:text="${rate.id}"></td>
+									<td th:text="${rate.name}"></td>
+									<td th:text="${rate.firstNight}"></td>
+									<td th:text="${rate.lastNight}"></td>
+									<td th:text="${rate.minNights}"></td>
+									<td th:text="${rate.maxNights}"></td>
+									<td th:text="${rate.roomPrice}"></td>
+									<td th:text="${rate.extraPersonPrice}"></td>
+									<td th:text="${rate.bedPrice}"></td>
+									<td>
+										<button type="button" class="btn btn-warning btn-sm ml-2"><span
+												class="fas fa-edit"></span><span class="ml-1">Edit</span></button>
+										<button type="button" class="btn btn-danger btn-sm ml-2"><span
+												class="fas fa-trash-alt"></span><span class="ml-1">Delete</span>
+										</button>
+									</td>
+								</tr>
+
+								</tbody>
+
+							</table>
+						</div>
+<!--					</div>-->
+				</div>
+			</div>
+		</main>
+		<footer class="py-4 bg-light mt-auto" th:replace="~{/fragments/app-fragments :: footer}">
+
+		</footer>
+	</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <!-- Modal window for adding entities-->
+        <div class="modal fade" id="modal-update" tabindex="-1"
+             role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" th:fragment="modal-update">
+            <div class="modal-dialog modal-dialog-centered modal-lg"
+                 role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/properties/{id}/update}"
+                              th:method="POST">
+                            <div class="form-group">
+
+                                <input type="hidden" name="accountId" id="accountId"/>
+                                <div class="form-group row">
+                                    <label for="type" class="col-sm-2 col-form-label">Property type:</label>
+                                    <div class="col-sm-5">
+                                        <select id="type" class="form-control" name="type">
+                                            <option th:each="type : ${types}"
+                                                    th:text="${type.name}" th:value="${type.id}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row required">
+                                    <label for="name" class="col-sm-2 col-form-label">Name:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name"
+                                               name="name" required> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row required">
+                                    <label for="address" class="col-sm-2 col-form-label">Address:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="address"
+                                               name="address" required> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row required">
+                                    <label for="city" class="col-sm-2 col-form-label">City:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="city"
+                                               name="city" required> <span
+                                               ></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="state" class="col-sm-2 col-form-label">State
+                                        :</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="state"
+                                               name="state"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row required">
+                                    <label for="country" class="col-sm-2 col-form-label">Country:</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="country"
+                                                name="country">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="postcode" class="col-sm-2 col-form-label">Post code:</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="postcode"
+                                               name="postcode"> <span
+                                               ></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="lattitude" class="col-sm-2 col-form-label">Lattitude:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="lattitude"
+                                               name="lattitude"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="longitude" class="col-sm-2 col-form-label">Longitude:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="longitude"
+                                               name="longitude"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="phone"
+                                               name="phone"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="mobile" class="col-sm-2 col-form-label">Mobile:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="mobile"
+                                               name="mobile"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" id="email"
+                                               name="email"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="web" class="col-sm-2 col-form-label">Web:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="web"
+                                               name="web"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="contactFirstName" class="col-sm-2 col-form-label">Contact First Name:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="contactFirstName"
+                                               name="contactFirstName"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="contactLastName" class="col-sm-2 col-form-label">Contact Last Name:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="contactLastName"
+                                               name="contactLastName"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cutOffHour" class="col-sm-2 col-form-label">Cutoff Hour:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="cutOffHour"
+                                               name="cutOffHour"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="vatRate" class="col-sm-2 col-form-label">VAT rate (%):</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="vatRate"
+                                               name="vatRate"> <span
+                                               ></span>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary mr-2 ui black deny button"
+                                        data-dismiss="modal">Close
+                                </button>
+                                <button type="submit" class="btn btn-primary ui positive right labeled icon button">Save
+                                    <i class="checkmark icon"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
