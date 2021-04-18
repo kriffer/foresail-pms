@@ -42,8 +42,6 @@ public class PropertyService {
 	@Autowired
 	private PropertyRepository propertyRepository;
 
-	@Autowired
-	private PropertyTypeService propertyTypeService;
 
 	public List<Property> findAll() {
 		return propertyRepository.findAllProperties();
@@ -53,20 +51,19 @@ public class PropertyService {
 		return propertyRepository.findAllPropertiesByAccount(account);
 	}
 
-	public Property findById(Long id) {
+	public Property findById(Integer id) {
 		return propertyRepository.findById(id).orElseThrow(() -> new PropertyNotFoundException(id));
 	}
 
 	public Property create(Account account, Property property) throws Exception {
 		property.setCreated(new Timestamp(new Date().getTime()));
-		property.setPropertyType(propertyTypeService.findById(1L));
 		property.setAccount(account);
 		int size = propertyRepository.findAllPropertiesByAccount(account).size();
 		property.setName("Property " + (size+1));
 		return propertyRepository.save(property);
 	}
 
-	public Property update(Long id, Property property) {
+	public Property update(Integer id, Property property) {
 		return propertyRepository.findById(id).map(prop -> {
 			prop.setActive(property.getActive());
 			prop.setAccount(property.getAccount());
@@ -81,13 +78,11 @@ public class PropertyService {
 			prop.setEmail(property.getEmail());
 			prop.setPhone(property.getPhone());
 			prop.setMobile(property.getMobile());
-			prop.setPropertyType(property.getPropertyType());
 			prop.setVatRate(property.getVatRate());
 			prop.setWeb(property.getWeb());
 			prop.setUpdated(new Timestamp(new Date().getTime()));
 			prop.setPostcode(property.getPostcode());
 			prop.setRooms(property.getRooms());
-                        prop.setPropertyType(property.getPropertyType());
 			return propertyRepository.save(prop);
 		}).orElseGet(() -> {
 			property.setId(id);
@@ -95,7 +90,7 @@ public class PropertyService {
 		});
 	}
 
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		propertyRepository.deleteById(id);
 	}
 

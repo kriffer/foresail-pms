@@ -44,7 +44,7 @@ public class AccountService {
 	}
 
 
-	public Account findById(Long id){
+	public Account findById(Integer id){
 		return accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException(id));
 	}
 
@@ -52,7 +52,7 @@ public class AccountService {
 		return accountRepository.save(account);
 	}
 
-	public Account update(Long id, Account account) {
+	public Account update(Integer id, Account account) {
 		return accountRepository.findById(id).map(accnt -> {
 			accnt.setActive(account.getActive());
 			accnt.setBalance(account.getBalance());
@@ -67,7 +67,7 @@ public class AccountService {
 		});
 	}
 
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		accountRepository.deleteById(id);
 	}
 }

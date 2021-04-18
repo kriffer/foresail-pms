@@ -61,7 +61,7 @@ public class UserServiceImpl implements  UserService<User, UserRegistrationDto> 
 	}
 
 	@Transactional
-	public User findUserById(Long id) {
+	public User findUserById(Integer id) {
 		return userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException(id));
 	}

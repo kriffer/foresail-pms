@@ -36,11 +36,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface BookingRepository extends CrudRepository<Booking, Long> {
+public interface BookingRepository extends CrudRepository<Booking, Integer> {
 
-	@Query("select b from Booking b join fetch b.room")
+	@Query("select b from Booking b join fetch b.room join fetch b.guest")
 	List<Booking> findAllBookings();
 
-	@Query("select b from Booking b join fetch b.room  where b.property=:property")
+	@Query("select b from Booking b join fetch b.room join fetch b.guest where b.property=:property")
 	List<Booking> findAllBookingsByProperty(@Param("property") Property property);
 }

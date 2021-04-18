@@ -39,13 +39,13 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public abstract class BaseEntity implements Persistable<Long> {
+public abstract class BaseEntity implements Persistable<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    protected Integer id;
 
-    public Long id() {
+    public Integer id() {
         Assert.notNull(id, "Entity must have id");
         return id;
     }

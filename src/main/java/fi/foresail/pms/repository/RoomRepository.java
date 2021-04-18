@@ -36,14 +36,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface RoomRepository extends CrudRepository <Room, Long> {
+public interface RoomRepository extends CrudRepository <Room, Integer> {
 
 	@Query("select r from Room r join fetch r.property  where r.property =:property ")
 	List<Room> findAllByProperty(@Param("property") Property property);
 
 
 	@Query("select r from Room r where r.id=:id")
-	Room findRoomById(Long id);
+	Room findRoomById(Integer id);
 
 
 }

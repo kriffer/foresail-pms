@@ -35,12 +35,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface PropertyRepository extends CrudRepository<Property, Long> {
+public interface PropertyRepository extends CrudRepository<Property, Integer> {
 
 	@Query("select p from Property p")
 	List<Property> findAllProperties();
 
-	@Query("select p from Property p join fetch p.account join fetch p.propertyType where p.account =:account")
+	@Query("select p from Property p join fetch p.account where p.account =:account")
 	List<Property> findAllPropertiesByAccount(@Param("account") Account account);
 
 

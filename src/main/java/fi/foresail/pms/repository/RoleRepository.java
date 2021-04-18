@@ -37,7 +37,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 @Component
 @Repository
-public interface RoleRepository extends CrudRepository<Role, Long> {
+public interface RoleRepository extends CrudRepository<Role, Integer> {
 
 	@Query("SELECT r FROM Role r")
 	List<Role> findAllRoles();

@@ -59,7 +59,7 @@ public class RoleService {
 	}
 
 	@Transactional
-	public Optional<Role> findRoleById(Long id) {
+	public Optional<Role> findRoleById(Integer id) {
 		return roleRepository.findById(id);
 	}
 

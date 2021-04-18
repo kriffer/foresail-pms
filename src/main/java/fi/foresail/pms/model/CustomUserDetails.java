@@ -47,7 +47,7 @@ public class CustomUserDetails implements UserDetails {
 				.collect(Collectors.toList());
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return user.getId();
 	}
 

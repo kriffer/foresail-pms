@@ -85,7 +85,7 @@ public class BookingController {
     }
 
     @RequestMapping(value = "/bookings/add", method = RequestMethod.POST)
-    public String addBooking(@RequestParam(required = false) Long propertyId,@RequestParam(required = false) Long roomId, Booking booking) throws Exception {
+    public String addBooking(@RequestParam(required = false) Integer propertyId,@RequestParam(required = false) Integer roomId, Booking booking) throws Exception {
            
         booking.setProperty(propertyService.findById(propertyId));
         booking.setRoom(roomService.findById(roomId));
@@ -96,7 +96,7 @@ public class BookingController {
     }
 
     @PostMapping("/bookings/{id}/update")
-    public String update(@PathVariable("id") Long id, @Valid Booking booking,
+    public String update(@PathVariable("id") Integer id, @Valid Booking booking,
             BindingResult result) throws Exception {
 
         if (result.hasErrors()) {
@@ -107,7 +107,7 @@ public class BookingController {
     }
 
     @GetMapping("/bookings/{id}/delete")
-    public String delete(@PathVariable("id") Long id) {
+    public String delete(@PathVariable("id") Integer id) {
         bookingService.deleteById(id);
         return "redirect:/bookings?success";
     }

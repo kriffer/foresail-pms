@@ -25,7 +25,7 @@ package fi.foresail.pms.exception;
 
 
 public class RoomNotFoundException extends RuntimeException {
-	public RoomNotFoundException(Long id) {
+	public RoomNotFoundException(Integer id) {
 
 		super("Could not find room " + id);
 	}

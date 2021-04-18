@@ -60,8 +60,8 @@ public class Booking extends BaseEntity implements Serializable {
 	private BigDecimal price;
 
 	@ManyToOne 
-	@JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = true)
-	private Customer customer;
+	@JoinColumn(name = "guest_id", referencedColumnName = "id", nullable = true)
+	private Guest guest;
 
 	@ManyToOne 
 	@JoinColumn(name = "property_id", referencedColumnName = "id", nullable = false)

@@ -35,13 +35,13 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "customer")
+@Table(name = "guest")
 @ToString
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer extends BaseEntity implements Serializable {
+public class Guest extends BaseEntity implements Serializable {
 
 	@Column(name = "first_name", nullable = true, length = 45)
 	private String firstName;
@@ -76,7 +76,7 @@ public class Customer extends BaseEntity implements Serializable {
 	@Column(name = "notes", nullable = true, length = 255)
 	private String notes;
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Booking> bookings;
 
 }

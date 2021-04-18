@@ -33,7 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Long> {
+public interface AccountRepository extends CrudRepository<Account, Integer> {
 	
         @Override
         @Query("select a from Account a join fetch a.properties")

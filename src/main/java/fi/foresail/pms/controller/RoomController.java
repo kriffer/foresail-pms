@@ -87,15 +87,15 @@ public class RoomController {
 
     @GetMapping("/rooms/add")
     public String addRoom(@RequestParam(required = false) String propertyId) {
-        Property property = propertyService.findById(Long.valueOf(propertyId));
+        Property property = propertyService.findById(Integer.valueOf(propertyId));
         roomService.create(property);
         return "redirect:/rooms?success";
 
     }
 
     @PostMapping("/rooms/{id}/update")
-    public String update(@RequestParam(required = false) Long propertyId,
-            @RequestParam(required = false) String unitstring, @PathVariable("id") Long id, @Valid Room room,
+    public String update(@RequestParam(required = false) Integer propertyId,
+            @RequestParam(required = false) String unitstring, @PathVariable("id") Integer id, @Valid Room room,
             BindingResult result) {
         Property property = propertyService.findById(propertyId);
         room.setProperty(property);
@@ -109,7 +109,7 @@ public class RoomController {
     }
 
     @GetMapping("/rooms/{id}/delete")
-    public String delete(@PathVariable("id") Long id) {
+    public String delete(@PathVariable("id") Integer id) {
         try {
             roomService.deleteById(id);
             return "redirect:/rooms?success";

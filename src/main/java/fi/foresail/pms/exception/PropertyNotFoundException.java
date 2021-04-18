@@ -24,7 +24,7 @@
 package fi.foresail.pms.exception;
 
 public class PropertyNotFoundException extends RuntimeException {
-	public PropertyNotFoundException(Long id) {
+	public PropertyNotFoundException(Integer id) {
 
 		super("Could not find property " + id);
 	}

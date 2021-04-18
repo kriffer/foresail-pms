@@ -63,8 +63,8 @@ public class Room extends BaseEntity implements Serializable {
 	@JoinColumn(name = "rate_id", referencedColumnName = "id", nullable = false)
 	private Rate rate;
 
-	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-	private Set<Unit> units;
+//	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+//	private Set<Unit> units;
 
 	@Column(name = "price", nullable = true)
 	private BigDecimal price;

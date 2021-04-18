@@ -62,7 +62,7 @@ public class User extends BaseEntity {
     @Size(max = 128)
     private String email;
 
-    @Column(name = "enabled")
+    @Column(name = "active")
     private byte enabled;
 
     @Temporal(TemporalType.TIMESTAMP)

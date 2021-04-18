@@ -84,13 +84,12 @@
                                             <td th:text="${property.city}"></td>
                                             <td th:text="${property.state}"></td>
                                             <td th:text="${property.country}"></td>
-                                            <td th:text="${property.propertyType.name}"></td>
                                             <td align="right">
 
                                                 <button type="button" class="btn btn-outline-info btn-sm ml-2" data-toggle="modal"
                                                         data-target="#modal-update" th:attr="data-propertyid=${{property.id}},
                                                         data-propertyaccountid=${{property.account.id}},
-                                                        data-propertytypeid=${{property.propertyType.id}},
+
                                                         data-propertyname=${{property.name}}, data-propertyaddress=${{property.address}},
                                                         data-propertycity=${{property.city}},data-propertystate=${{property.state}},
                                                         data-propertycountry=${{property.country}},

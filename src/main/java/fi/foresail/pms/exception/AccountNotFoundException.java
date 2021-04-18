@@ -25,7 +25,7 @@
 package fi.foresail.pms.exception;
 
 public class AccountNotFoundException extends RuntimeException{
-		public AccountNotFoundException(Long id) {
+		public AccountNotFoundException(Integer id) {
 			super("Could not find account " + id);
 		}
 }

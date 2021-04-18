@@ -65,7 +65,7 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
-    public Room update(Long id, Room room) {
+    public Room update(Integer id, Room room) {
         return roomRepository.findById(id).map(rm -> {
             rm.setProperty(room.getProperty());
             rm.setName(room.getName());
@@ -81,12 +81,12 @@ public class RoomService {
         });
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         Room room = roomRepository.findRoomById(id);
         roomRepository.delete(room);
     }
 
-    public Room findById(Long roomId) {
+    public Room findById(Integer roomId) {
         return roomRepository.findRoomById(roomId); //To change body of generated methods, choose Tools | Templates.
     }
 

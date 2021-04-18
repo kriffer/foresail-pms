@@ -25,10 +25,9 @@ package fi.foresail.pms.service;
 
 import fi.foresail.pms.model.Room;
 import fi.foresail.pms.model.Unit;
-import fi.foresail.pms.repository.UnitRepository;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,42 +39,41 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class UnitService {
 
-    @Autowired
-    private UnitRepository unitRepository;
 
-    public Set<Unit> getUnits(Room room) {
-        Set<Unit> units = room.getUnits();
-        return units;
-    }
+
+//    public Set<Unit> getUnits(Room room) {
+//        Set<Unit> units = room.getUnits();
+//        return units;
+//    }
 
     public Unit create(Room room) {
         Unit unit = new Unit();
         unit.setId(1);
         unit.setName("Unit 1");
         unit.setRoom(room);
-        unitRepository.save(unit);
+
         return unit;
     }
 
-    public Unit update(Integer id, Unit unit) {
-        return unitRepository.findById(id, unit.getRoom()).map(rm -> {
-            rm.setRoom(unit.getRoom());
-            rm.setName(unit.getName());
-            rm.setInfo(unit.getInfo());
-
-            return unitRepository.save(rm);
-        }).orElseGet(() -> {
-            unit.setId(id);
-            return unitRepository.save(unit);
-        });
-    }
+//    public Unit update(Integer id, Unit unit) {
+//        return unitRepository.findById(id, unit.getRoom()).map(rm -> {
+//            rm.setRoom(unit.getRoom());
+//            rm.setName(unit.getName());
+//            rm.setInfo(unit.getInfo());
+//
+//            return unitRepository.save(rm);
+//        }).orElseGet(() -> {
+//            unit.setId(id);
+//            return unitRepository.save(unit);
+//        });
+//    }
 
     @Transactional
     public List<Unit> updateUnitsFromString(String unitstring, Room room) {
         List units = new ArrayList();
         log.info("==unitstring: " + unitstring);
 
-        deleteByRoom(room);
+//        deleteByRoom(room);
 
         if (!unitstring.isEmpty()) {
             String[] unts = unitstring.split("\n");
@@ -92,7 +90,7 @@ public class UnitService {
                 }
                 unit.setRoom(room);
 
-                update(unit.getId(), unit);
+//                update(unit.getId(), unit);
                 units.add(unit);
                 id++;
             }
@@ -101,13 +99,13 @@ public class UnitService {
         return units;
     }
 
-    void deleteByRoom(Room room) {
-        unitRepository.deleteByRoom(room);
-    }
-
-    public List<Unit> findUnitsByRoomId(Long id) {
-        return unitRepository.findByRoomId(id);
-
-    }
+//    void deleteByRoom(Room room) {
+//        unitRepository.deleteByRoom(room);
+//    }
+//
+//    public List<Unit> findUnitsByRoomId(Long id) {
+//        return unitRepository.findByRoomId(id);
+//
+//    }
 
 }

@@ -27,14 +27,14 @@ import fi.foresail.pms.model.Booking;
 import fi.foresail.pms.model.BookingStatus;
 import fi.foresail.pms.model.Property;
 import fi.foresail.pms.repository.BookingRepository;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -58,16 +58,16 @@ public class BookingService {
 
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         bookingRepository.deleteById(id);
     }
 
-    public Booking update(Long id, Booking booking) {
+    public Booking update(Integer id, Booking booking) {
         return bookingRepository.findById(id).map(b -> {
             b.setBookingDate(booking.getBookingDate());
             b.setCheckIn(booking.getCheckIn());
             b.setCheckOut(booking.getCheckOut());
-            b.setCustomer(booking.getCustomer());
+            b.setGuest(booking.getGuest());
             b.setPrice(booking.getPrice());
             b.setProperty(booking.getProperty());
 

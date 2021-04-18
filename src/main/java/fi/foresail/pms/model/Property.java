@@ -74,7 +74,7 @@ public class Property extends BaseEntity implements Serializable {
 	@Column(name = "postcode", nullable = true, length = 45)
 	private String postcode;
 
-	@Column(name = "latitude", nullable = true, length = 45)
+	@Column(name = "lattitude", nullable = true, length = 45)
 	private String latitude;
 
 	@Column(name = "longitude", nullable = true, length = 45)
@@ -107,10 +107,6 @@ public class Property extends BaseEntity implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
 	private Account account;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "type_id", referencedColumnName = "id", nullable = false)
-	private PropertyType propertyType;
 
 	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
 	private Set<Room> rooms;

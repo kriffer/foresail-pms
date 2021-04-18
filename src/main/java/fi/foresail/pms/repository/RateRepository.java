@@ -36,7 +36,7 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface RateRepository extends CrudRepository<Rate, Long> {
+public interface RateRepository extends CrudRepository<Rate, Integer> {
 
 	@Query("select r from Rate r where r.property =:property ")
 	List<Rate> findAllByProperty(@Param("property") Property property);

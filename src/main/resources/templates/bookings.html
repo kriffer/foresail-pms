@@ -72,8 +72,8 @@
 								<tr th:each="booking : ${property.value}">
 
 									<td th:text="${booking.id}"></td>
-									<td th:text="${booking.customer.firstName}"></td>
-									<td th:text="${booking.customer.lastName}"></td>
+									<td th:text="${booking.getGuest().firstName}"></td>
+									<td th:text="${booking.getGuest().lastName}"></td>
 									<td th:text="${booking.price}"></td>
 									<td th:text="${booking.property.name}"></td>
 									<td th:text="${booking.room.name}"></td>
